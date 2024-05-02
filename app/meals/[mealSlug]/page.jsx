@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import classes from "./page.module.css";
 
-export default function MealDetailPage({ params }) {
+export default async function MealDetailPage({ params }) {
   const meal = getMeal(params.mealSlug);
 
   if (!meal) {
@@ -18,7 +18,7 @@ export default function MealDetailPage({ params }) {
     <>
       <header className={classes.header}>
         <div className={classes.image}>
-          <Image src={meal.image} fill />
+          <Image src={meal.image} sizes="100%" priority alt={meal.title} fill />
         </div>
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>
